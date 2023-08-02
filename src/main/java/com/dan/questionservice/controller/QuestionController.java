@@ -1,5 +1,6 @@
 package com.dan.questionservice.controller;
 import com.dan.questionservice.model.Question;
+import com.dan.questionservice.model.QuestionWrapper;
 import com.dan.questionservice.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,6 +48,12 @@ public class QuestionController {
     public ResponseEntity<List<Integer>> getQuestionsFromQuiz(@RequestParam String categoryName, @RequestParam Integer numQuestions)
     {
         return questionService.getQuestionsForQuiz(categoryName, numQuestions);
+    }
+
+    @PostMapping("getQuestions")
+    public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(@RequestBody List<Integer> questionIds)
+    {
+        return questionService.getQuestionsFromId(questionIds);
     }
     //generate
     //getquestions (questionid)
