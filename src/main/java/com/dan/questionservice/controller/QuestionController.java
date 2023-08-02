@@ -41,4 +41,14 @@ public class QuestionController {
         }
         return new ResponseEntity<>(new String("Something Went Wrong!"), HttpStatus.BAD_REQUEST);
     }
+
+
+    @GetMapping("generate")
+    public ResponseEntity<List<Integer>> getQuestionsFromQuiz(@RequestParam String categoryName, @RequestParam Integer numQuestions)
+    {
+        return questionService.getQuestionsForQuiz(categoryName, numQuestions);
+    }
+    //generate
+    //getquestions (questionid)
+    //getscore
 }
